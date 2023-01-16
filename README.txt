@@ -1,15 +1,13 @@
-MDB 5 Angular
+¡Bienvenido! 
 
-Version: FREE 4.0.0
+Por favor realice los siguientes pasos para visualizar el proyecto.
 
-Documentation:
-https://mdbootstrap.com/docs/b5/angular/
+1. Descargar e instalar "node.js" en caso de no tenerlo. Enlace para descargar: (https://nodejs.org/es/) 
 
-Installation:
-https://mdbootstrap.com/docs/b5/angular/getting-started/installation/
+2. Abrir un terminal o cmd en la carpeta raiz del proyecto (El nombre de la carpeta es "MDB5-ANGULAR").
 
-CLI & hosting:
-https://mdbootstrap.com/docs/standard/cli/
+3. Ejecutar el comando "npm install".
 
-Support:
-https://mdbootstrap.com/support/cat/angular/
+4. Ejecutar el comando "ng serve -o".
+
+5. Listo, se abrirá el proyecto en su navegador de preferencia.
