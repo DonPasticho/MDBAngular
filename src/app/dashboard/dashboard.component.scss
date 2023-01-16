@@ -1,0 +1,32 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+  }
+  
+#navbar {
+    flex: 0 0 50px; 
+}
+  
+#wrapper {
+  display: flex;
+  height: calc(100vh - 50px); 
+}
+  
+#sidebar {
+  background-color: var(--navy_blue);
+  flex-basis: 15rem;
+}
+
+  
+#content {
+  flex: 1;
+  overflow: auto;
+}
+
+aside > div > a {
+    color: white;
+    font-size: 12px;
+}
+

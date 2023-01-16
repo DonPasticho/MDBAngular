@@ -1,0 +1,258 @@
+<div class="modal-header bg_navy_blue " style="
+color:white">
+    <h5 class="modal-title" id="exampleModalLabel">Agregar Nueva Persona</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="validationForm" class="d-grid"
+    >
+      <section class="d-grid" *ngIf="edit == false">
+        <div class="d-grid gap-4">
+          <mdb-form-control class="mb-2">
+              <input 
+              mdbInput 
+              mdbValidate
+              type="text" 
+              formControlName="firstName" 
+              id="firstName" 
+              class="form-control" 
+              required
+              >
+              <label mdbLabel class="form-label" for="firstName">Nombre</label>
+              <mdb-error
+                *ngIf="
+                firstName?.invalid && (firstName?.dirty || firstName?.touched)
+                "
+                ><p><small>Nombre es requerido</small></p>
+              </mdb-error> 
+              <mdb-success
+                *ngIf="
+                firstName?.valid && (firstName?.dirty || firstName?.touched)
+                "
+                >
+              </mdb-success>
+          </mdb-form-control>
+        
+          <mdb-form-control class="mb-2" *ngIf="edit == false">
+            <input 
+                mdbInput 
+                mdbValidate
+                type="text" 
+                formControlName="lastName" 
+                id="lastName" 
+                class="form-control" 
+                required
+                >
+                <label mdbLabel class="form-label" for="lastName">Apellido</label>
+                <mdb-error
+                  *ngIf="
+                  lastName?.invalid && (lastName?.dirty || lastName?.touched)
+                  "
+                  ><p><small>Apellido es requerido</small></p>
+                </mdb-error>
+                <mdb-success
+                  *ngIf="
+                  lastName?.valid && (lastName?.dirty || lastName?.touched)
+                  "
+                  >
+                </mdb-success>
+          </mdb-form-control>
+    
+          <mdb-form-control class="mb-2">
+            <input 
+                mdbInput 
+                mdbValidate
+                type="email" 
+                formControlName="email" 
+                id="email" 
+                class="form-control" 
+                required 
+                >
+                <label mdbLabel class="form-label" for="email">Correo electrónico</label>
+                <mdb-error
+                  *ngIf="
+                  email?.invalid && (email?.dirty || email?.touched)
+                  "
+                  ><p><small>Correo es requerido</small></p>
+                </mdb-error>
+                <mdb-success
+                  *ngIf="
+                  email?.valid && (email?.dirty)
+                  "
+                  >
+                </mdb-success>
+          </mdb-form-control>
+        </div>
+        <hr>    
+        
+        <div class="form-check ms-2 pb-1">
+          <input
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="isJudge"
+          />
+          <label class="form-check-label" for="isJudge"> Persona Judirica </label>
+        </div>
+        
+        <div class="form-check ms-2 pb-1">
+          <input
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="isClient"
+          />
+          <label class="form-check-label" for="isClient"> Es cliente </label>
+        </div>
+        
+        <div class="form-check ms-2 pb-1 mb-2">
+          <input
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="isActive"
+          />
+          <label class="form-check-label" for="isActive"> Activo </label>
+        </div>
+  
+        <button type="submit" (click)="onSubmit()" class="btn btn-success">
+          Guardar
+        </button>
+      </section>
+      <section class="d-grid" *ngIf="userSelected && edit == true">
+        <div class="d-grid gap-4">
+          <mdb-form-control class="mb-2">
+              <input 
+              mdbInput 
+              mdbValidate
+              type="text" 
+              formControlName="firstName" 
+              id="firstName" 
+              class="form-control" 
+              required
+              [(ngModel)]="userSelected.firstName" 
+              >
+              <label mdbLabel class="form-label" for="firstName">Nombre</label>
+              <mdb-error
+                *ngIf="
+                firstName?.invalid && (firstName?.dirty || firstName?.touched)
+                "
+                ><p><small>Nombre es requerido</small></p>
+              </mdb-error> 
+              <mdb-success
+                *ngIf="
+                firstName?.valid && (firstName?.dirty || firstName?.touched)
+                "
+                >
+              </mdb-success>
+          </mdb-form-control>
+        
+          <mdb-form-control class="mb-2">
+            <input 
+                mdbInput 
+                mdbValidate
+                type="text" 
+                formControlName="lastName" 
+                id="lastName" 
+                class="form-control" 
+                required
+                [(ngModel)]="userSelected.lastName" 
+                >
+                <label mdbLabel class="form-label" for="lastName">Apellido</label>
+                <mdb-error
+                  *ngIf="
+                  lastName?.invalid && (lastName?.dirty || lastName?.touched)
+                  "
+                  ><p><small>Apellido es requerido</small></p>
+                </mdb-error>
+                <mdb-success
+                  *ngIf="
+                  lastName?.valid && (lastName?.dirty || lastName?.touched)
+                  "
+                  >
+                </mdb-success>
+          </mdb-form-control>
+    
+          <mdb-form-control class="mb-2">
+            <input 
+                mdbInput 
+                mdbValidate
+                type="email" 
+                formControlName="email" 
+                id="email" 
+                class="form-control" 
+                required
+                [(ngModel)]="userSelected.email" 
+                >
+                <label mdbLabel class="form-label" for="email">Correo electrónico</label>
+                <mdb-error
+                  *ngIf="
+                  email?.invalid && (email?.dirty || email?.touched)
+                  "
+                  ><p><small>Correo es requerido</small></p>
+                </mdb-error>
+                <mdb-success
+                  *ngIf="
+                  email?.valid && (email?.dirty)
+                  "
+                  >
+                </mdb-success>
+          </mdb-form-control>
+    
+          <hr>
+          
+        </div>
+        
+        <div class="form-check ms-2 pb-1">
+          <input
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="isJudge"
+            [checked]="userSelected.isJudge == true"
+          />
+          <label class="form-check-label" for="isJudge"> Persona Judirica </label>
+        </div>
+        
+        <div class="form-check ms-2 pb-1">
+          <input
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="isClient"
+            [checked]="userSelected.isClient == true"
+          />
+          <label class="form-check-label" for="isClient"> Es cliente </label>
+        </div>
+        
+        <div class="form-check ms-2 pb-1 mb-2">
+          <input
+            mdbCheckbox
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="isActive"
+            [checked]="userSelected.isActive == true"
+          />
+          <label class="form-check-label" for="isActive"> Activo </label>
+        </div>
+  
+        <button type="submit" (click)="onSubmit()" class="btn btn-success">
+          <span >Editar</span>
+        </button>
+        <button type="submit" class="btn btn-warning" (click)="onSubmit2()" *ngIf="edit == true">Desactivar</button>
+        <button class="btn btn-primary" (click)="clear()" *ngIf="edit == true">Limpiar</button>  
+      </section>
+    </form>
+  </div>
+ 

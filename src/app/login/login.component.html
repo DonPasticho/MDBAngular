@@ -1,0 +1,74 @@
+<div class="login_bg">
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="card" style="width: 500px;">
+          <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center h-100">
+              <span style="font-weight: bold;">Administrador</span>
+              <a  href="#">Iniciar como usuario</a>
+            </div> 
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 my-5">
+                <img src="../assets/img/logo.png" class="img-fluid" alt="logo">
+              </div>
+              <div class="col-md-6 my-4">
+                <form [formGroup]="validationForm" (ngSubmit)="onSubmit()" class="d-grid gap-4" 
+                >
+                    <mdb-form-control class="mb-2">
+                        <input 
+                        mdbInput 
+                        mdbValidate
+                        type="text" 
+                        formControlName="username" 
+                        id="username" 
+                        class="form-control" 
+                        required
+                        >
+                        <label mdbLabel class="form-label" for="username">Usuario</label>
+                        <mdb-error
+                          *ngIf="
+                          username?.invalid && (username?.dirty || username?.touched)
+                          "
+                          ><p><small>Usuario es requerido</small></p>
+                        </mdb-error> 
+                        <mdb-success
+                          *ngIf="
+                          username?.valid && (username?.dirty || username?.touched)
+                          "
+                          >
+                        </mdb-success>
+                    </mdb-form-control>
+                
+                  <mdb-form-control class="mb-2">
+                    <input 
+                        mdbInput 
+                        mdbValidate
+                        type="password" 
+                        formControlName="password" 
+                        id="password" 
+                        class="form-control" 
+                        required
+                        >
+                        <label mdbLabel class="form-label" for="password">Contraseña</label>
+                        <mdb-error
+                          *ngIf="
+                          password?.invalid && (password?.dirty || password?.touched)
+                          "
+                          ><p><small>Contraseña es requerido</small></p>
+                        </mdb-error>
+                        <mdb-success
+                          *ngIf="
+                          password?.valid && (password?.dirty || password?.touched)
+                          "
+                          >
+                        </mdb-success>
+                  </mdb-form-control>
+                  <button type="submit" class="btn btn-success">Iniciar sesión</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,149 @@
+<div class="container-fluid p-0 layout">
+  <div id="navbar">
+    <nav class="navbar justify-content-start shadow-4" 
+    style="background-color: var(--navy_blue);">
+      <div class="mx-3 py-2">
+        <i class="fas fa-bars mx-2" style="cursor:pointer; color:white"></i>
+          <img
+            src="../assets/img/logo.png"
+            height="35"
+            alt="logo"
+            classs="navbar-brand"
+            loading="lazy"
+          />
+      </div>    
+    </nav>
+  </div>
+  <div id="wrapper">
+    <div id="sidebar">
+      <aside class="sidebar">
+        <div class="list-group list-group-flush mx-3 gap-2"  >
+          <a href="#" class="list-group-item
+           px-3 rounded-3 bg_navy_blue border" 
+          > 
+            <h6 class="text-center">Bienvenido</h6>
+            <hr>
+            <p>Nombre: Administrador</p>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action 
+           px-3 rounded-3 border mt-2 bg-warning"
+          > 
+            <i class="fas fa-user-alt mx-2"></i>Maestro Persona
+          </a>
+          <a href="#" class="list-group-item  
+          px-3 rounded-3 bg_navy_blue border rounded-3"
+          > 
+            <i class="far fa-user mx-2"></i>Maestro Perfil
+          </a>
+          <a href="#" class="list-group-item  
+          px-3 rounded-3 bg_navy_blue border rounded-3" 
+            > 
+            <i class="fas fa-users mx-2"></i>Maestro Usuarios
+          </a>
+          <a href="#" class="list-group-item  
+          px-3 rounded-3 bg_navy_blue border rounded-3" 
+            > 
+            <i class="fas fa-file-alt mx-2"></i>Maestro Control de Documentación
+          </a>
+          <a href="#" class="list-group-item 
+          px-3 rounded-3 bg_navy_blue border rounded-3"
+            > 
+            <i class="fas fa-database mx-2"></i>Maestro Proyecto
+          </a>
+          <a href="#" class="list-group-item 
+          px-3 rounded-3 bg_navy_blue border rounded-3"
+            >
+            <i class="fas fa-sign-out-alt mx-2"></i>Usuario vs. Proyecto vs. Perfil
+          </a>
+          <a class="list-group-item 
+          px-3 rounded-3 bg_navy_blue border rounded-3"
+          routerLink="/login">
+            <i class="fas fa-sign-out-alt mx-2"></i>Salir
+          </a>
+        </div>        
+      </aside>
+    </div>
+    <div id="content">
+      <main>
+        <div class="content">
+          <article>
+            <div class="">
+              <h4 class="text-center mt-5">Maestro Personas</h4>
+              <hr class="hr" />
+              <div class="card mx-4">
+                <div class="card-header d-flex justify-content-between" 
+                  style="background-color: var(--navy_blue); color:white;">
+                  <div class="card-title mt-2">Personas</div>
+                  <button class="btn btn-primary btn-sm" (click)="openNewModal()" >Nueva Persona</button>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <button type="button" style="background-color:#3F51B5" 
+                      class="btn btn-rounded mx-1" >
+                      <span style="color:white">Activos</span>
+                    </button>
+                    <button type="button" style="background-color:#3F51B5" 
+                      class="btn btn-rounded mx-1">
+                      <span style="color:white">Inactivos</span>
+                    </button>
+                    <button type="button" style="background-color:#3F51B5" 
+                      class="btn btn-rounded mx-1">
+                      <span style="color:white">Todos</span>
+                    </button>
+                  </div>
+                  <table id="table_id" datatable [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Juridico</th>
+                            <th>Cliente</th>
+                            <th>Activo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                              <span *ngIf="user.isJudge == false">
+                                No
+                              </span>
+                              <span *ngIf="user.isJudge == true">
+                                Si
+                              </span>
+                            </td>
+                            <td>
+                              <span *ngIf="user.isClient == false">
+                                No
+                              </span>
+                              <span *ngIf="user.isClient == true">
+                                Si
+                              </span>
+                            </td>
+                            <td>
+                              <span *ngIf="user.isActive == false" style="color:red">
+                                Inactivo
+                              </span>
+                              <span *ngIf="user.isActive == true" style="color:green">
+                                Activo
+                              </span>
+                            </td>
+                            <td> 
+                              <i class="fas fa-edit" style="cursor:pointer;" (click)=" openEditModal(user)" ></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </main>
+    </div>
+  </div> 
+</div>
